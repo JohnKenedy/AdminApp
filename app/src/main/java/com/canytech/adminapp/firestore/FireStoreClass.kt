@@ -1,4 +1,4 @@
-package com.canytech.supermercado.firestore
+package com.canytech.adminapp.firestore
 
 import android.app.Activity
 import android.content.Context

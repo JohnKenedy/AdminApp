@@ -4,9 +4,8 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import com.canytech.adminapp.R
-import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
-import com.canytech.adminapp.ui.activities.BaseActivity
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth

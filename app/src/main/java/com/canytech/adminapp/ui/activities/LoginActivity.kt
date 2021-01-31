@@ -6,7 +6,7 @@ import android.text.TextUtils
 import android.view.View
 import android.widget.Toast
 import com.canytech.adminapp.R
-import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
 import com.canytech.supermercado.ui.activities.UserProfileActivity
 import com.canytech.adminapp.utils.Constants

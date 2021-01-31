@@ -4,7 +4,9 @@ import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
@@ -18,12 +20,16 @@ import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
 
 class AddProductActivity : BaseActivity(), View.OnClickListener {
+
+    private var mSelectedImageFileURI: Uri? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_product)
         setupActionBar()
 
         imageView_add_update_product.setOnClickListener(this)
+        btn_add_product_submit.setOnClickListener(this)
     }
 
     private fun setupActionBar() {
@@ -53,6 +59,12 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                             this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
                             Constants.READ_STORAGE_PERMISSION_CODE
                         )
+                    }
+                }
+
+                R.id.btn_add_product_submit -> {
+                    if (validateProductDetails()) {
+                        showErrorSnackBar("Your details are valid", false)
                     }
                 }
             }
@@ -93,11 +105,11 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                         )
                     )
 
-                    val selectedImageFileURI = data.data!!
+                   mSelectedImageFileURI = data.data!!
 
                     try {
                         GlideLoader(this).loadUserPicture(
-                            selectedImageFileURI,
+                            mSelectedImageFileURI!!,
                             imageView_product_image
                         )
                     } catch (e: IOException) {
@@ -107,6 +119,53 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
             }
         } else if (resultCode == Activity.RESULT_CANCELED) {
             Log.e("Request Cancelled", "Image selection cancelled")
+        }
+    }
+
+    private fun validateProductDetails(): Boolean {
+        return when {
+            mSelectedImageFileURI == null -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.error_msg_select_product_image), true)
+                false
+            }
+
+            TextUtils.isEmpty(edit_text_product_title.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(resources.getString(R.string.error_msg_enter_product_title), true)
+                false
+            }
+
+            TextUtils.isEmpty(edit_text_product_old_price.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.error_msg_enter_product_old_price),
+                    true
+                )
+                false
+            }
+
+            TextUtils.isEmpty(edit_text_product_price.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(resources.getString(R.string.error_msg_enter_product_price), true)
+                false
+            }
+
+            TextUtils.isEmpty(edit_text_product_description.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.error_msg_enter_product_description),
+                    true
+                )
+                false
+            }
+
+            TextUtils.isEmpty(edit_text_product_quantity.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.error_msg_enter_product_quantity),
+                    true
+                )
+                false
+            }
+            else -> {
+                true
+            }
         }
     }
 }

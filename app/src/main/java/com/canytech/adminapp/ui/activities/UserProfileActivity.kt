@@ -13,7 +13,7 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
-import com.canytech.supermercado.firestore.FireStoreClass
+import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
 import com.canytech.adminapp.ui.activities.BaseActivity
 import com.canytech.adminapp.ui.activities.DashboardActivity
