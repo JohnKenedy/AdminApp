@@ -1,3 +1,75 @@
 <resources>
     <string name="app_name">AdminApp</string>
+    <string name="fab_des">Carrinho</string>
+    <string name="home">Home</string>
+    <string name="search">Search</string>
+    <string name="wish_list">Wishlist</string>
+    <string name="profile">Profile</string>
+    <string name="example_item">Example product</string>
+    <string name="categories">Categorias</string>
+    <string name="view_all">Ver todas</string>
+    <string name="trending">Mais vendidos</string>
+    <string name="price">R$: 1,99</string>
+    <string name="unit_um_kg">Unidade: 1kg</string>
+    <string name="feature">Essencial</string>
+    <string name="sing_in">Sing In</string>
+    <string name="welcome">Welcome, </string>
+    <string name="welcome_desc">Sing In and get all the groceries at your doorstep</string>
+    <string name="mobile_number">Mobile no.</string>
+    <string name="or">OR</string>
+    <string name="sing_in_google">Sign in with Google</string>
+    <string name="sing_up_google">Sign Up with Google</string>
+    <string name="no_have_account">Don\'t have an account? <font color='#FECE01'><b>Sign Up</b></font></string>
+    <string name="forgot_password">forgot password?</string>
+    <string name="sing_up">Sign Up</string>
+    <string name="create_account">Create Account</string>
+    <string name="name">Full name</string>
+    <string name="email_address">Email address</string>
+    <string name="terms_conditions">By signing up you\'re accepting the Terms and Conditions</string>
+    <string name="error_msg_enter_name">Please, enter your name.</string>
+    <string name="error_msg_enter_password">Please enter password.</string>
+    <string name="error_msg_confirm_password">Please confirm password.</string>
+    <string name="error_msg_enter_email">Please enter email.</string>
+    <string name="register_completed">Thanks for registering!</string>
+    <string name="password">Password</string>
+    <string name="confirm_password">Confirm password</string>
+    <string name="please_wait">Please Wait&#8230;</string>
+    <string name="submit">Submit</string>
+    <string name="fotgot_desc">Enter your e-mail address we\'ll send you a emai to reset your password</string>
+    <string name="email_sent_success">Email sent successfully to reset your password!</string>
+    <string name="register_success">You are registered successfully.</string>
+    <string name="male">Man</string>
+    <string name="female">Woman</string>
+    <string name="email">Email:</string>
+    <string name="number">Cell phone:</string>
+    <string name="address">Address:</string>
+    <string name="storage_permissiob_denied">Oops, you just denied the permission for storage. You can also allow it from settings.</string>
+    <string name="image_selection_failed">Image selection Failed!</string>
+    <string name="error_msg_complete_all_fields">Please, complete all fields to continue</string>
+    <string name="profile_uptade_success">Your profile is updated successfully.</string>
+
+    <!--    <string name="title_activity_dashboard">MainActivity</string>-->
+    <string name="title_home">Home</string>
+    <string name="title_wishlist">WishList</string>
+    <string name="title_search">Search</string>
+    <string name="title_profile">Profile</string>
+
+    <string name="please_click_back_again_to_exit">Please click back again to exit.</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_settings">Settings</string>
+    <string name="add_addres">Add address</string>
+    <string name="logout">Logout</string>
+    <string name="edit">Edit</string>
+    <string name="addresses">Addresses</string>
+    <string name="gender">Gender:</string>
+    <string name="title_complete_profile">Complete Profile</string>
+    <string name="edit_profile">Edit profile</string>
+    <string name="action_add_product">Add Product</string>
+
+    <string name="et_hint_product_title">Product Title</string>
+    <string name="et_hint_product_price">Product Price ($)</string>
+    <string name="et_hint_product_old_price">Product Old Price ($)</string>
+    <string name="et_hint_product_description">Product Description</string>
+    <string name="et_hint_product_quantity">Product Quantity</string>
+
 </resources>
