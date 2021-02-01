@@ -2,6 +2,7 @@ package com.canytech.adminapp.ui.activities
 
 import android.Manifest
 import android.app.Activity
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
@@ -13,6 +14,8 @@ import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
+import com.canytech.adminapp.firestore.FireStoreClass
+import com.canytech.adminapp.models.Product
 import com.canytech.adminapp.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
@@ -22,6 +25,7 @@ import java.io.IOException
 class AddProductActivity : BaseActivity(), View.OnClickListener {
 
     private var mSelectedImageFileURI: Uri? = null
+    private var mProductImageURL: String = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -64,11 +68,63 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
 
                 R.id.btn_add_product_submit -> {
                     if (validateProductDetails()) {
-                        showErrorSnackBar("Your details are valid", false)
+                        uploadProductImage()
                     }
                 }
             }
         }
+    }
+
+    private fun uploadProductImage() {
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FireStoreClass().uploadImageToCloudStorage(
+            this,
+            mSelectedImageFileURI,
+            Constants.PRODUCT_IMAGE
+        )
+    }
+
+    fun productUploadSuccess() {
+        hideProgressDialog()
+        Toast.makeText(
+            this@AddProductActivity,
+            resources.getString(R.string.product_uploaded_success_mesage),
+            Toast.LENGTH_SHORT
+        ).show()
+        finish()
+    }
+
+    fun imageUploadSuccess(imageURL: String) {
+//        hideProgressDialog()
+//        showErrorSnackBar("Product image is uploaded successfully. Image URL: $imageURL", false)
+
+        mProductImageURL = imageURL
+
+        uploadProductDetails()
+
+    }
+
+    private fun uploadProductDetails() {
+
+        val username = this.getSharedPreferences(
+            Constants.MYGROCERYSTORE_PREFERENCES, Context.MODE_PRIVATE)
+            .getString(Constants.LOGGED_IN_USERNAME, "")!!
+
+        val product = Product(
+            FireStoreClass().getCurrentUserID(),
+            username,
+            edit_text_product_title.text.toString().trim { it <= ' ' },
+            edit_text_product_price.text.toString().trim { it <= ' ' },
+            edit_text_product_old_price.text.toString().trim { it <= ' ' },
+            edit_text_product_description.text.toString().trim { it <= ' ' },
+            edit_text_product_quantity.text.toString().trim { it <= ' ' },
+            edit_text_product_category.text.toString().trim { it <= ' ' },
+            edit_text_product_unit.text.toString().trim { it <= ' ' },
+
+            mProductImageURL
+        )
+
+        FireStoreClass().uploadProductDetails(this, product)
     }
 
     override fun onRequestPermissionsResult(
@@ -105,7 +161,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                         )
                     )
 
-                   mSelectedImageFileURI = data.data!!
+                    mSelectedImageFileURI = data.data!!
 
                     try {
                         GlideLoader(this).loadUserPicture(
@@ -126,7 +182,8 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
         return when {
             mSelectedImageFileURI == null -> {
                 showErrorSnackBar(
-                    resources.getString(R.string.error_msg_select_product_image), true)
+                    resources.getString(R.string.error_msg_select_product_image), true
+                )
                 false
             }
 
@@ -162,6 +219,15 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                     true
                 )
                 false
+            }
+            TextUtils.isEmpty(
+                edit_text_product_category.text.toString().trim { it <= ' ' }) -> {
+                showErrorSnackBar(
+                    resources.getString(R.string.error_msg_enter_product_category),
+                    true
+                )
+                false
+
             }
             else -> {
                 true

@@ -5,12 +5,14 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
+import com.canytech.adminapp.models.Product
 import com.canytech.adminapp.models.User
+import com.canytech.adminapp.ui.activities.AddProductActivity
 import com.canytech.adminapp.ui.activities.LoginActivity
 import com.canytech.adminapp.ui.activities.RegisterActivity
 import com.canytech.adminapp.ui.activities.SettingsActivity
-import com.canytech.supermercado.ui.activities.*
 import com.canytech.adminapp.utils.Constants
+import com.canytech.supermercado.ui.activities.*
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -127,9 +129,9 @@ class FireStoreClass {
             }
     }
 
-    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?) {
+    fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String) {
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
-            Constants.USER_PROFILE_IMAGE + System.currentTimeMillis() + "."
+            imageType + System.currentTimeMillis() + "."
                     + Constants.getFileExtension(activity, imageFileURI)
         )
 
@@ -148,6 +150,10 @@ class FireStoreClass {
                         is UserProfileActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
+                        is AddProductActivity -> {
+                            activity.imageUploadSuccess(uri.toString())
+                        }
+
                     }
                 }
         }
@@ -157,6 +163,9 @@ class FireStoreClass {
                     is UserProfileActivity -> {
                         activity.hideProgressDialog()
                     }
+                    is AddProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
                 }
                 // If have some error, It's printed in Log
                 Log.e(
@@ -164,8 +173,23 @@ class FireStoreClass {
                     exception.message,
                     exception
                 )
-
             }
+    }
 
+    fun uploadProductDetails(activity: AddProductActivity, productInfo: Product) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document()
+            .set(productInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                "Error while uploading the product details.",
+                e
+                )
+            }
     }
 }

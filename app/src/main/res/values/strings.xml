@@ -9,7 +9,7 @@
     <string name="categories">Categorias</string>
     <string name="view_all">Ver todas</string>
     <string name="trending">Mais vendidos</string>
-    <string name="price">R$: 1,99</string>
+    <string name="price">1,99</string>
     <string name="unit_um_kg">Unidade: 1kg</string>
     <string name="feature">Essencial</string>
     <string name="sing_in">Sing In</string>
@@ -78,5 +78,14 @@
     <string name="error_msg_enter_product_price">Please enter product price.</string>
     <string name="error_msg_enter_product_description">Please enter product description.</string>
     <string name="error_msg_enter_product_quantity">Please enter product quantity.</string>
+    <string name="error_msg_enter_product_category">Please enter product category.</string>
+
+    <string name="old_price">2.99</string>
+    <string name="et_hint_product_category">Product Category</string>
+    <string name="product_uploaded_success_mesage">Your product was uploaded successfully.</string>
+    <string name="categories_id"><![CDATA[1 - Personal Care, 2 - Chocolate, biscuits & snacks, 3 - Fruits & Vegetables, 4 - Breakfast, dairy & cereals, 5 - Baby care, 6 - Grains, wheat & rice, 7 - Beverages]]></string>
+    <string name="sign_price">$</string>
+    <string name="unit_ex">1 kg, 200 g, 1 Unit., Box</string>
+    <string name="et_hint_product_unit">Unit</string>
 
 </resources>

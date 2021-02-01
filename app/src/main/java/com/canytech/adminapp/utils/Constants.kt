@@ -7,8 +7,10 @@ import android.provider.MediaStore
 import android.webkit.MimeTypeMap
 
 object Constants {
-
+    // Collections in Cloud
     const val USERS: String = "users"
+    const val PRODUCTS: String = "products"
+
     const val MYGROCERYSTORE_PREFERENCES: String = "MyGroceryStorePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
     const val EXTRA_USER_DETAILS: String = "extra_user_details"
@@ -25,7 +27,6 @@ object Constants {
     const val COMPLETE_PROFILE: String = "profileCompleted"
 
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"
-
     const val PRODUCT_IMAGE: String = "Product_Image"
 
 
