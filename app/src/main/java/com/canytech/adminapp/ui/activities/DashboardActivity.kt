@@ -6,7 +6,6 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.canytech.adminapp.R
-import com.canytech.adminapp.ui.activities.BaseActivity
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_dashboard.*
 import kotlinx.android.synthetic.main.activity_dashboard.view.*
@@ -29,7 +28,7 @@ class DashboardActivity : BaseActivity() {
         val appBarConfiguration = AppBarConfiguration(
             setOf(
                 R.id.navigation_home, R.id.navigation_search,
-                R.id.navigation_wishlist, R.id.navigation_profile
+                R.id.navigation_edit_products, R.id.navigation_profile
             )
         )
         setupActionBarWithNavController(navController, appBarConfiguration)

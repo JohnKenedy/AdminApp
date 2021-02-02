@@ -8,7 +8,7 @@ import com.canytech.adminapp.R
 import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
 import com.canytech.supermercado.ui.activities.AddTrendingProductActivity
 
-class ProductsFragment : Fragment() {
+class MainFragment : Fragment() {
 
 //    private lateinit var homeViewModel: HomeViewModel
 

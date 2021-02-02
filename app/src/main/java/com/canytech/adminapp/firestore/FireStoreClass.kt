@@ -12,9 +12,10 @@ import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
 import com.canytech.adminapp.ui.activities.LoginActivity
 import com.canytech.adminapp.ui.activities.RegisterActivity
 import com.canytech.adminapp.ui.activities.SettingsActivity
-import com.canytech.adminapp.ui.fragments.ProductsFragment
+import com.canytech.adminapp.ui.fragments.ProductItemsFragment
+import com.canytech.adminapp.ui.fragments.ProfileFragment
 import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.ui.activities.*
+import com.canytech.supermercado.ui.activities.AddTrendingProductActivity
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -187,8 +188,9 @@ class FireStoreClass {
                     productsList.add(product)
                 }
 
-                }
             }
+    }
+
     fun uploadFeatureProductDetails(
         activity: AddFeatureProductActivity,
         productFeatureInfo: ProductFeature
@@ -224,6 +226,54 @@ class FireStoreClass {
                     productsList.add(productFeature)
                 }
 
+            }
+    }
+
+    fun getAllProductsList(fragment: ProductItemsFragment) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+
+                val allProductsList: ArrayList<ProductTrending> = ArrayList()
+
+                for (i in document.documents) {
+
+                    val allProducts = i.toObject(ProductTrending::class.java)!!
+                    allProducts.product_id = i.id
+                    allProductsList.add(allProducts)
+                }
+
+                fragment.successAllProductList(allProductsList)
+
+            }
+            .addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+                Log.e(fragment.javaClass.simpleName, "Error while getting All products", e)
+            }
+    }
+
+    fun getAllFeaturesProductsList(fragment: ProfileFragment) {
+        mFireStore.collection(Constants.FEATURES)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+
+                val allFeaturesProductsList: ArrayList<ProductTrending> = ArrayList()
+
+                for (i in document.documents) {
+
+                    val allFeaturesProducts = i.toObject(ProductTrending::class.java)!!
+                    allFeaturesProducts.product_id = i.id
+                    allFeaturesProductsList.add(allFeaturesProducts)
+                }
+
+                fragment.successAllFeaturesProductList(allFeaturesProductsList)
+
+            }
+            .addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+                Log.e(fragment.javaClass.simpleName, "Error while getting All products", e)
             }
     }
 

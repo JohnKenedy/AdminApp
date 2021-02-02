@@ -71,6 +71,7 @@
     <string name="et_hint_product_old_price">Product Old Price ($)</string>
     <string name="et_hint_product_description">Product Description</string>
     <string name="et_hint_product_quantity">Product Quantity</string>
+    <string name="product_quantity">Quantity: </string>
 
     <string name="error_msg_select_product_image">Please select product image.</string>
     <string name="error_msg_enter_product_title">Please enter product title.</string>
@@ -91,5 +92,14 @@
 
     <string name="action_add_feature_product">Add Feature Product</string>
     <string name="action_add_category_product">Add Category</string>
+    <string name="all_product">All Products</string>
+    <string name="edit_trending_product">Edit Trending Product</string>
+    <string name="edit_feature_product">Edit Feature Product</string>
+    <string name="edit_product">Edit Product</string>
+    <string name="category">Category: </string>
+    <string name="hortifruti"><![CDATA[Fruits & vegetables]]></string>
+    <string name="twenty_five">25</string>
+    <string name="view_product">View Product</string>
+    <string name="add">add</string>
 
 </resources>

@@ -14,15 +14,16 @@
         android:title="@string/search" />
 
     <item
-        android:id="@+id/menu_block"
+        android:id="@+id/menu_add"
         android:orderInCategory="3"
-        android:title="@string/search" />
+        android:icon="@drawable/ic_baseline_add_photo_alternate_24"
+        android:title="@string/add" />
 
     <item
-        android:id="@+id/navigation_wishlist"
-        android:icon="@drawable/ic_baseline_favorite_24"
+        android:id="@+id/navigation_edit_products"
+        android:icon="@drawable/ic_baseline_edit_24"
         android:orderInCategory="4"
-        android:title="@string/wish_list" />
+        android:title="@string/edit" />
 
     <item
         android:id="@+id/navigation_profile"

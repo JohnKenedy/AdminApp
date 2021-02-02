@@ -1,13 +1,16 @@
-package com.canytech.supermercado.ui.fragments
+package com.canytech.adminapp.ui.fragments
 
-import android.content.Intent
 import android.os.Bundle
 import android.view.*
-import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.adminapp.R
-import com.canytech.adminapp.ui.activities.SettingsActivity
+import com.canytech.adminapp.firestore.FireStoreClass
+import com.canytech.adminapp.models.ProductTrending
+import com.canytech.adminapp.ui.adapters.ProductItemsAdapter
+import kotlinx.android.synthetic.main.fragment_edit_product.*
+import kotlinx.android.synthetic.main.fragment_profile.*
 
-class ProfileFragment : Fragment() {
+class ProfileFragment : BaseFragment() {
 
 //    private lateinit var notificationsViewModel: ProfileViewModel
 
@@ -28,19 +31,25 @@ class ProfileFragment : Fragment() {
         return root
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        inflater.inflate(R.menu.dashboard_menu, menu)
-        super.onCreateOptionsMenu(menu, inflater)
+    override fun onResume() {
+        super.onResume()
+        getAllFeaturesProductsList()
     }
 
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        val id = item.itemId
-        when (id) {
-            R.id.action_settings -> {
-                startActivity(Intent(activity, SettingsActivity::class.java))
-                return true
-            }
-        }
-        return super.onOptionsItemSelected(item)
+    fun successAllFeaturesProductList(productFeatureItemsList: ArrayList<ProductTrending>) {
+        hideProgressDialog()
+
+        rv_edit_products_feature_products.layoutManager =
+            LinearLayoutManager(activity, LinearLayoutManager.VERTICAL, false)
+        rv_edit_products_feature_products.setHasFixedSize(true)
+
+        val adapterAllProducts = ProductItemsAdapter(requireActivity(), productFeatureItemsList)
+        rv_edit_products_feature_products.adapter = adapterAllProducts
+
+    }
+
+    private fun getAllFeaturesProductsList() {
+        showProgressDialog(resources.getString(R.string.please_wait))
+        FireStoreClass().getAllFeaturesProductsList(this@ProfileFragment)
     }
 }

@@ -3,7 +3,9 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:background="@color/white"
+    android:layout_height="match_parent"
+    tools:context=".ui.fragments.SearchFragment">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar_all_products"
@@ -20,7 +22,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:gravity="center"
-        android:text="@string/edit_feature_product"
+        android:text="@string/edit_trending_product"
         android:textColor="@color/white"
         android:fontFamily="@font/montserrat_medium"
         android:textSize="20sp"
@@ -29,17 +31,17 @@
         android:layout_height="?actionBarSize" />
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rv_edit_products_feature_products"
+        android:id="@+id/rv_edit_products_all_products"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
         android:layout_marginTop="10dp"
+        android:layout_marginStart="10dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="?actionBarSize"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/toolbar_all_products"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_list_layout"
         tools:itemCount="1"
-        tools:listitem="@layout/item_list_layout" />
+        app:layout_constraintTop_toBottomOf="@id/toolbar_all_products"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

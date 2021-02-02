@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/navigation_home"
-        android:name="com.canytech.adminapp.ui.fragments.ProductsFragment"
+        android:name="com.canytech.adminapp.ui.fragments.MainFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_products" />
 
@@ -18,14 +18,14 @@
         tools:layout="@layout/fragment_search" />
 
     <fragment
-        android:id="@+id/navigation_wishlist"
-        android:name="com.canytech.adminapp.ui.fragments.WishListFragment"
+        android:id="@+id/navigation_edit_products"
+        android:name="com.canytech.adminapp.ui.fragments.ProductItemsFragment"
         android:label="@string/title_wishlist"
-        tools:layout="@layout/fragment_wishlist" />
+        tools:layout="@layout/fragment_edit_trending_product" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.canytech.supermercado.ui.fragments.ProfileFragment"
+        android:name="com.canytech.adminapp.ui.fragments.ProfileFragment"
         android:label="@string/title_profile"
         tools:layout="@layout/fragment_profile" />
 </navigation>
