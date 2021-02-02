@@ -58,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:padding="16dp"
-                android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+                android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                app:tint="@color/white" />
 
         </FrameLayout>
 

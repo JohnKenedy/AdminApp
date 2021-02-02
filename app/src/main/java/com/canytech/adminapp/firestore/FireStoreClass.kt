@@ -12,8 +12,8 @@ import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
 import com.canytech.adminapp.ui.activities.LoginActivity
 import com.canytech.adminapp.ui.activities.RegisterActivity
 import com.canytech.adminapp.ui.activities.SettingsActivity
-import com.canytech.adminapp.ui.fragments.ProductItemsFragment
-import com.canytech.adminapp.ui.fragments.ProfileFragment
+import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
+import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
 import com.canytech.supermercado.models.ProductFeature
 import com.canytech.supermercado.ui.activities.AddTrendingProductActivity
 import com.canytech.supermercado.utils.Constants
@@ -211,25 +211,41 @@ class FireStoreClass {
             }
     }
 
-    fun getFeatureProductsList(fragment: Fragment) {
-        mFireStore.collection(Constants.FEATURES)
-            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e("Products List", document.documents.toString())
-                val productsList: ArrayList<ProductFeature> = ArrayList()
-                for (i in document.documents) {
+    fun deleteTrendingProduct(fragment: ProductsTrendingFragment, productId: String) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
+            .delete()
+            .addOnSuccessListener {
+                fragment.productTrendingDeleteSuccess()
 
-                    val productFeature = i.toObject(ProductFeature::class.java)
-                    productFeature!!.product_id = i.id
+            }.addOnFailureListener { e ->
+                fragment.hideProgressDialog()
 
-                    productsList.add(productFeature)
-                }
-
+                Log.e(
+                    fragment.requireActivity().javaClass.simpleName,
+                    "Error while deleting the product", e
+                )
             }
     }
 
-    fun getAllProductsList(fragment: ProductItemsFragment) {
+    fun deleteFeatureProduct(fragment: ProductsFeatureFragment, productId: String) {
+        mFireStore.collection(Constants.FEATURES)
+            .document(productId)
+            .delete()
+            .addOnSuccessListener {
+                fragment.productFeatureDeleteSuccess()
+
+            }.addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+
+                Log.e(
+                    fragment.requireActivity().javaClass.simpleName,
+                    "Error while deleting the product", e
+                )
+            }
+    }
+
+    fun getAllProductsList(fragment: ProductsTrendingFragment) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
@@ -253,7 +269,7 @@ class FireStoreClass {
             }
     }
 
-    fun getAllFeaturesProductsList(fragment: ProfileFragment) {
+    fun getAllFeaturesProductsList(fragment: ProductsFeatureFragment) {
         mFireStore.collection(Constants.FEATURES)
             .get()
             .addOnSuccessListener { document ->

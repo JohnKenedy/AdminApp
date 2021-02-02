@@ -23,12 +23,12 @@
         android:id="@+id/navigation_edit_products"
         android:icon="@drawable/ic_baseline_edit_24"
         android:orderInCategory="4"
-        android:title="@string/edit" />
+        android:title="@string/trending" />
 
     <item
         android:id="@+id/navigation_profile"
         android:icon="@drawable/ic_baseline_person_24"
         android:orderInCategory="5"
-        android:title="@string/profile" />
+        android:title="@string/feature" />
 
 </menu>

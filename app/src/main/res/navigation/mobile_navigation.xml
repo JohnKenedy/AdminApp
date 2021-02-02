@@ -19,13 +19,13 @@
 
     <fragment
         android:id="@+id/navigation_edit_products"
-        android:name="com.canytech.adminapp.ui.fragments.ProductItemsFragment"
+        android:name="com.canytech.adminapp.ui.fragments.ProductsTrendingFragment"
         android:label="@string/title_wishlist"
         tools:layout="@layout/fragment_edit_trending_product" />
 
     <fragment
         android:id="@+id/navigation_profile"
-        android:name="com.canytech.adminapp.ui.fragments.ProfileFragment"
+        android:name="com.canytech.adminapp.ui.fragments.ProductsFeatureFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_edit_features_product" />
 </navigation>

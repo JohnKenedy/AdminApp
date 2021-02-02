@@ -12,27 +12,24 @@
         android:background="@color/light_gray"
         android:padding="5dp">
 
-        <ImageView
+        <androidx.cardview.widget.CardView
             android:id="@+id/info_item_product"
             android:layout_width="140dp"
             android:layout_height="135dp"
             android:layout_margin="7dp"
-            android:background="@drawable/bg_poster"
+            app:cardCornerRadius="10dp"
             android:backgroundTint="@color/white"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
+            app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
             android:id="@+id/item_img_product"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:padding="10dp"
-            android:src="@drawable/bananana"
-            app:layout_constraintBottom_toBottomOf="@id/info_item_product"
-            app:layout_constraintEnd_toEndOf="@id/info_item_product"
-            app:layout_constraintStart_toStartOf="@id/info_item_product"
-            app:layout_constraintTop_toTopOf="@id/info_item_product" />
+            android:layout_width="match_parent"
+            android:padding="15dp"
+            android:layout_height="match_parent"
+            android:src="@drawable/bananana" />
+
+        </androidx.cardview.widget.CardView>
 
         <TextView
             android:id="@+id/item_title_product"
@@ -45,6 +42,16 @@
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/info_item_product"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/iv_delete_product"
+            android:layout_width="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_margin="8dp"
+            android:padding="4dp"
+            android:src="@drawable/ic_baseline_delete_24"
+            android:layout_height="wrap_content" />
 
         <TextView
             android:id="@+id/old_price_coin"
@@ -185,7 +192,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toStartOf="@id/btn_item_list_layout_view_product"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/item_img_product" />
+            app:layout_constraintTop_toBottomOf="@id/info_item_product" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/btn_item_list_layout_view_product"
@@ -200,7 +207,7 @@
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/btn_item_list_layout_edit_product"
-            app:layout_constraintTop_toBottomOf="@id/item_img_product" />
+            app:layout_constraintTop_toBottomOf="@id/info_item_product" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

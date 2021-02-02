@@ -27,9 +27,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
-                android:paddingEnd="20dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
+                android:paddingEnd="20dp"
                 android:text="@string/action_add_product"
                 android:textColor="@color/white"
                 android:textSize="20sp"
@@ -58,7 +58,8 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
                 android:padding="16dp"
-                android:src="@drawable/ic_baseline_add_photo_alternate_24" />
+                android:src="@drawable/ic_baseline_add_photo_alternate_24"
+                app:tint="@color/white" />
 
         </FrameLayout>
 

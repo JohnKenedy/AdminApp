@@ -8,7 +8,7 @@
     <string name="example_item">Example product</string>
     <string name="categories">Categorias</string>
     <string name="view_all">Ver todas</string>
-    <string name="trending">Mais vendidos</string>
+    <string name="trending">Trending</string>
     <string name="price">1,99</string>
     <string name="unit_um_kg">Unit:</string>
     <string name="feature">Feature</string>
@@ -100,6 +100,13 @@
     <string name="hortifruti"><![CDATA[Fruits & vegetables]]></string>
     <string name="twenty_five">25</string>
     <string name="view_product">View Product</string>
-    <string name="add">add</string>
+    <string name="add">Add Item</string>
+
+    <string name="product_delete_success">You product was deleted successfully.</string>
+    <string name="delete_dialog_title">Delete</string>
+    <string name="delete_dialog_message">Are you sure you want to delete the product?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+
 
 </resources>
