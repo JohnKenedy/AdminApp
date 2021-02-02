@@ -9,7 +9,7 @@ import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.ui.adapters.ProductItemsAdapter
-import kotlinx.android.synthetic.main.fragment_edit_product.*
+import kotlinx.android.synthetic.main.fragment_edit_trending_product.*
 
 class ProductItemsFragment : BaseFragment() {
 
