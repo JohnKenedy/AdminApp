@@ -1,6 +1,7 @@
 package com.canytech.adminapp.ui.adapters
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -8,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.canytech.adminapp.R
 import com.canytech.adminapp.models.ProductTrending
+import com.canytech.adminapp.ui.activities.ProductDetailActivity
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_list_layout.*
@@ -44,6 +46,12 @@ open class ProductFeatureItemsAdapter (
                 fragment.deleteProduct(model.product_id)
             }
         }
+
+        holder.itemView.btn_item_list_layout_view_product.setOnClickListener {
+            val intent = Intent(context, ProductDetailActivity::class.java)
+            context.startActivity(intent)
+        }
+
     }
 
     override fun getItemCount(): Int {
