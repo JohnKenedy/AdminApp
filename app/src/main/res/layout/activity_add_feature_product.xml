@@ -12,7 +12,7 @@
         tools:context=".ui.activities.AddTrendingProductActivity">
 
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbar_add_product_activity"
+            android:id="@+id/toolbar_add_feature_product_activity"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
             android:background="@color/yellow"
@@ -23,14 +23,14 @@
             app:titleTextColor="@color/no_color">
 
             <TextView
-                android:id="@+id/textView_title_add_product"
+                android:id="@+id/textView_title_add_feature_product"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:layout_gravity="center"
                 android:paddingEnd="20dp"
                 android:fontFamily="@font/montserrat_medium"
                 android:gravity="center"
-                android:text="@string/action_add_product"
+                android:text="@string/action_add_feature_product"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
@@ -38,22 +38,22 @@
         </androidx.appcompat.widget.Toolbar>
 
         <FrameLayout
-            android:id="@+id/frameLayout_product_image"
+            android:id="@+id/frameLayout_product_feature_image"
             android:layout_width="match_parent"
             android:layout_height="250dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_add_product_activity">
+            app:layout_constraintTop_toBottomOf="@id/toolbar_add_feature_product_activity">
 
             <ImageView
-                android:id="@+id/imageView_product_image"
+                android:id="@+id/imageView_product_feature_image"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:background="@color/yellow"
                 android:scaleType="centerCrop" />
 
             <ImageView
-                android:id="@+id/imageView_add_update_product"
+                android:id="@+id/imageView_add_update_feature_product"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="end|bottom"
@@ -63,7 +63,7 @@
         </FrameLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_title"
+            android:id="@+id/til_product_feature_title"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -77,10 +77,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/frameLayout_product_image">
+            app:layout_constraintTop_toBottomOf="@id/frameLayout_product_feature_image">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_title"
+                android:id="@+id/edit_text_product_feature_title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -89,7 +89,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_old_price"
+            android:id="@+id/til_product_feature_old_price"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -103,10 +103,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_title">
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_title">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_old_price"
+                android:id="@+id/edit_text_product_feature_old_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -115,7 +115,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_price"
+            android:id="@+id/til_product_feature_price"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -129,10 +129,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_old_price">
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_old_price">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_price"
+                android:id="@+id/edit_text_feature_product_price"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -141,7 +141,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_description"
+            android:id="@+id/til_product_feature_description"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -155,10 +155,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_price">
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_price">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_description"
+                android:id="@+id/edit_text_product_feature_description"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -168,7 +168,7 @@
 
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_quantity"
+            android:id="@+id/til_product_feature_quantity"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -182,10 +182,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_description">
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_description">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_quantity"
+                android:id="@+id/edit_text_product_feature_quantity"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -194,7 +194,7 @@
         </com.google.android.material.textfield.TextInputLayout>
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_category"
+            android:id="@+id/til_product_feature_category"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,10 +208,10 @@
             app:boxCornerRadiusTopStart="13dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_quantity">
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_quantity">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_category"
+                android:id="@+id/edit_text_product_feature_category"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -231,10 +231,10 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_category" />
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_category" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/til_product_unit"
+            android:id="@+id/til_product_feature_unit"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -251,7 +251,7 @@
             app:layout_constraintTop_toBottomOf="@id/categories_ids">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/edit_text_product_unit"
+                android:id="@+id/edit_text_product_feature_unit"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:drawablePadding="5dp"
@@ -271,10 +271,10 @@
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/til_product_unit" />
+            app:layout_constraintTop_toBottomOf="@id/til_product_feature_unit" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/btn_add_product_submit"
+            android:id="@+id/btn_add_product_feature_submit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="15dp"

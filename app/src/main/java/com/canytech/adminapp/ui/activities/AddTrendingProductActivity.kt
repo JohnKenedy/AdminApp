@@ -1,4 +1,4 @@
-package com.canytech.adminapp.ui.activities
+package com.canytech.supermercado.ui.activities
 
 import android.Manifest
 import android.app.Activity
@@ -15,14 +15,15 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
-import com.canytech.adminapp.models.Product
-import com.canytech.adminapp.utils.Constants
+import com.canytech.adminapp.models.ProductTrending
+import com.canytech.adminapp.ui.activities.BaseActivity
+import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_product.*
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
 
-class AddProductActivity : BaseActivity(), View.OnClickListener {
+class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
 
     private var mSelectedImageFileURI: Uri? = null
     private var mProductImageURL: String = ""
@@ -57,7 +58,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
                             this, Manifest.permission.READ_EXTERNAL_STORAGE
                         ) == PackageManager.PERMISSION_GRANTED
                     ) {
-                        Constants.showImageChooser(this@AddProductActivity)
+                        Constants.showImageChooser(this@AddTrendingProductActivity)
                     } else {
                         ActivityCompat.requestPermissions(
                             this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
@@ -87,7 +88,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
     fun productUploadSuccess() {
         hideProgressDialog()
         Toast.makeText(
-            this@AddProductActivity,
+            this@AddTrendingProductActivity,
             resources.getString(R.string.product_uploaded_success_mesage),
             Toast.LENGTH_SHORT
         ).show()
@@ -110,7 +111,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
             Constants.MYGROCERYSTORE_PREFERENCES, Context.MODE_PRIVATE)
             .getString(Constants.LOGGED_IN_USERNAME, "")!!
 
-        val product = Product(
+        val product = ProductTrending(
             FireStoreClass().getCurrentUserID(),
             username,
             edit_text_product_title.text.toString().trim { it <= ' ' },
@@ -124,7 +125,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener {
             mProductImageURL
         )
 
-        FireStoreClass().uploadProductDetails(this, product)
+        FireStoreClass().uploadTrendingProductDetails(this, product)
     }
 
     override fun onRequestPermissionsResult(

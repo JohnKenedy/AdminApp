@@ -5,14 +5,17 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import com.canytech.adminapp.models.Product
+import androidx.fragment.app.Fragment
+import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.models.User
-import com.canytech.adminapp.ui.activities.AddProductActivity
+import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
 import com.canytech.adminapp.ui.activities.LoginActivity
 import com.canytech.adminapp.ui.activities.RegisterActivity
 import com.canytech.adminapp.ui.activities.SettingsActivity
-import com.canytech.adminapp.utils.Constants
+import com.canytech.adminapp.ui.fragments.ProductsFragment
+import com.canytech.supermercado.models.ProductFeature
 import com.canytech.supermercado.ui.activities.*
+import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -102,33 +105,6 @@ class FireStoreClass {
             }
     }
 
-    fun updateUserProfileData(activity: Activity, userHashMap: HashMap<String, Any>) {
-
-        mFireStore.collection(Constants.USERS)
-            .document(getCurrentUserID())
-            .update(userHashMap)
-            .addOnSuccessListener {
-                when (activity) {
-                    is UserProfileActivity -> {
-                        activity.userProfileUpdateSuccess()
-                    }
-                }
-            }
-            .addOnFailureListener { e ->
-                when (activity) {
-                    is UserProfileActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                }
-
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error while updating the user details.",
-                    e
-                )
-            }
-    }
-
     fun uploadImageToCloudStorage(activity: Activity, imageFileURI: Uri?, imageType: String) {
         val sRef: StorageReference = FirebaseStorage.getInstance().reference.child(
             imageType + System.currentTimeMillis() + "."
@@ -147,11 +123,11 @@ class FireStoreClass {
                 .addOnSuccessListener { uri ->
                     Log.e("Downloadable Image URL", uri.toString())
                     when (activity) {
-                        is UserProfileActivity -> {
+                        is AddTrendingProductActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
-                        is AddProductActivity -> {
-                            activity.imageUploadSuccess(uri.toString())
+                        is AddFeatureProductActivity -> {
+                            activity.imageFeatureUploadSuccess(uri.toString())
                         }
 
                     }
@@ -160,10 +136,10 @@ class FireStoreClass {
 
             .addOnFailureListener { exception ->
                 when (activity) {
-                    is UserProfileActivity -> {
+                    is AddTrendingProductActivity -> {
                         activity.hideProgressDialog()
                     }
-                    is AddProductActivity -> {
+                    is AddFeatureProductActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -176,10 +152,13 @@ class FireStoreClass {
             }
     }
 
-    fun uploadProductDetails(activity: AddProductActivity, productInfo: Product) {
+    fun uploadTrendingProductDetails(
+        activity: AddTrendingProductActivity,
+        productTrendingInfo: ProductTrending
+    ) {
         mFireStore.collection(Constants.PRODUCTS)
             .document()
-            .set(productInfo, SetOptions.merge())
+            .set(productTrendingInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.productUploadSuccess()
             }
@@ -187,9 +166,68 @@ class FireStoreClass {
                 activity.hideProgressDialog()
                 Log.e(
                     activity.javaClass.simpleName,
-                "Error while uploading the product details.",
-                e
+                    "Error while uploading the product details.",
+                    e
                 )
             }
     }
+
+    fun getTrendingProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val productsList: ArrayList<ProductTrending> = ArrayList()
+                for (i in document.documents) {
+
+                    val product = i.toObject(ProductTrending::class.java)
+                    product!!.product_id = i.id
+
+                    productsList.add(product)
+                }
+
+                }
+            }
+    fun uploadFeatureProductDetails(
+        activity: AddFeatureProductActivity,
+        productFeatureInfo: ProductFeature
+    ) {
+        mFireStore.collection(Constants.FEATURES)
+            .document()
+            .set(productFeatureInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productFeatureUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the product details.",
+                    e
+                )
+            }
+    }
+
+    fun getFeatureProductsList(fragment: Fragment) {
+        mFireStore.collection(Constants.FEATURES)
+            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e("Products List", document.documents.toString())
+                val productsList: ArrayList<ProductFeature> = ArrayList()
+                for (i in document.documents) {
+
+                    val productFeature = i.toObject(ProductFeature::class.java)
+                    productFeature!!.product_id = i.id
+
+                    productsList.add(productFeature)
+                }
+
+            }
+    }
+
 }
+
+
+

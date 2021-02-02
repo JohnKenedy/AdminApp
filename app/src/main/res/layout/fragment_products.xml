@@ -9,30 +9,34 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="15dp"
         android:layout_marginBottom="10dp"
-        android:orientation="vertical">
+        android:background="#FBFBFB"
+        android:orientation="vertical"
+        android:paddingBottom="15dp">
 
         <ImageView
-            android:id="@+id/shape_top"
             android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:background="@drawable/shape_top"
-            android:elevation="4dp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:src="@drawable/shape_top"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="?actionBarSize"
-            android:elevation="4dp"
+            app:layout_constraintEnd_toEndOf="parent"
             android:src="@drawable/stayhome_bergao_png"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize"
+            android:background="@color/no_color"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

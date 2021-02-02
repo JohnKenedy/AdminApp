@@ -2,9 +2,22 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item android:id="@+id/action_add_product"
+    <item android:id="@+id/action_add_trending_product"
         android:icon="@drawable/ic_vector_add_product"
         android:title="@string/action_add_product"
-        app:showAsAction="always" />
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/action_add_feature_product"
+        android:icon="@drawable/ic_baseline_shopping_cart_24"
+        android:title="@string/action_add_feature_product"
+        app:showAsAction="always"
+        />
+
+    <item android:id="@+id/action_add_category"
+        android:icon="@drawable/ic_baseline_add_photo_alternate_24"
+        android:title="@string/action_add_category_product"
+        app:showAsAction="always"
+        />
 
 </menu>

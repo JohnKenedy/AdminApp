@@ -12,12 +12,13 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.content.ContextCompat.startActivity
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
 import com.canytech.adminapp.ui.activities.BaseActivity
 import com.canytech.adminapp.ui.activities.DashboardActivity
-import com.canytech.adminapp.utils.Constants
+import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_settings.*
@@ -85,88 +86,6 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
         }
 
         toolbar_user_profile_activity.setNavigationOnClickListener { onBackPressed() }
-    }
-
-    override fun onClick(v: View?) {
-
-        if (v != null) {
-            when (v.id) {
-
-                R.id.profile_image -> {
-
-                    if (ContextCompat.checkSelfPermission(
-                            this, Manifest.permission.READ_EXTERNAL_STORAGE
-                        )
-                        == PackageManager.PERMISSION_GRANTED
-                    ) {
-                        Constants.showImageChooser(this)
-                    } else {
-                        ActivityCompat.requestPermissions(
-                            this, arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE),
-                            Constants.READ_STORAGE_PERMISSION_CODE
-                        )
-                    }
-                }
-
-                //Update info Profile (ADDRESS and MOBILE NUMBER)
-                R.id.btn_user_profile_submit -> {
-                    if (validateUserProfileDetails()) {
-                        showProgressDialog(resources.getString(R.string.please_wait))
-
-                        //Uploading Image to Profile (Cloud FireStore)
-                        if (mSelectedImageFileUri != null)
-                            FireStoreClass().uploadImageToCloudStorage(this, mSelectedImageFileUri, Constants.USER_PROFILE_IMAGE)
-                        else {
-                            updateUserProfileDetails()
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private fun updateUserProfileDetails() {
-        val userHashMap = HashMap<String, Any>()
-
-//        val name = text_view_user_profile_name.text.toString().trim { it <= ' ' }
-//        if (name != mUserDetails.name) {
-//            userHashMap[Constants.NAME] = name
-//        }
-
-        val mobileNumber =
-            edit_text_register_number.text.toString().trim { it <= ' ' }
-
-        val userAddress =
-            edit_text_register_address.text.toString().trim { it <= ' ' }
-
-        val gender = if (radio_btn_user_profile_male.isChecked) {
-            Constants.MALE
-        } else {
-            Constants.FEMALE
-        }
-
-        if (mUserProfileImageURL.isNotEmpty()) {
-            userHashMap[Constants.IMAGE] = mUserProfileImageURL
-        }
-
-        //create key and value to Firebase, EX: key: gender value: male,
-        // key: userAddress value: Address typed
-        if (mobileNumber.isNotEmpty() || userAddress.isNotEmpty()) {
-            userHashMap[Constants.MOBILE] = mobileNumber.toLong()
-            userHashMap[Constants.ADDRESS] = userAddress
-        }
-
-        if (gender.isNotEmpty() && gender != mUserDetails.gender) {
-            userHashMap[Constants.GENDER] = gender
-        }
-
-        userHashMap[Constants.GENDER] = gender
-
-        userHashMap[Constants.COMPLETE_PROFILE] = 1
-
-        //showProgressDialog(resources.getString(R.string.please_wait))
-
-        FireStoreClass().updateUserProfileData(this, userHashMap)
     }
 
     override fun onRequestPermissionsResult(
@@ -243,11 +162,7 @@ open class UserProfileActivity : BaseActivity(), View.OnClickListener {
 
     }
 
-    fun imageUploadSuccess(imageURL: String) {
-        //hideProgressDialog()
-
-        mUserProfileImageURL = imageURL
-        updateUserProfileDetails()
+    override fun onClick(v: View?) {
 
     }
 }
