@@ -115,6 +115,7 @@
     <string name="in_stock">In stock:</string>
     <string name="out_of_stock">Out of stock:</string>
     <string name="number_ex">10</string>
+    <string name="add_to_cart">Add to cart</string>
 
 
 </resources>

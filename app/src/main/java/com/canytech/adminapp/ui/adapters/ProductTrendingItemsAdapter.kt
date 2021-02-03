@@ -12,6 +12,7 @@ import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.ui.activities.ProductDetailActivity
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
+import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.item_list_layout.*
 import kotlinx.android.synthetic.main.item_list_layout.view.*
@@ -50,6 +51,7 @@ open class ProductTrendingItemsAdapter (
 
         holder.itemView.btn_item_list_layout_view_product.setOnClickListener {
             val intent = Intent(context, ProductDetailActivity::class.java)
+            intent.putExtra(Constants.EXTRA_PRODUCT_ID, model.product_id)
             context.startActivity(intent)
         }
     }

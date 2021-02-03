@@ -10,16 +10,6 @@
         android:layout_height="wrap_content"
         android:paddingBottom="15dp">
 
-        <androidx.appcompat.widget.Toolbar
-            android:id="@+id/top"
-            app:titleTextColor="@color/no_color"
-            android:background="@color/no_color"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_width="match_parent"
-            android:layout_height="?actionBarSize" />
-
         <ImageView
             android:id="@+id/bg"
             android:layout_width="match_parent"
@@ -44,6 +34,16 @@
             app:layout_constraintBottom_toBottomOf="@+id/top"
             android:layout_height="wrap_content" />
 
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/top"
+            app:titleTextColor="@color/no_color"
+            android:background="@color/no_color"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_width="match_parent"
+            android:layout_height="?actionBarSize" />
+
         <androidx.cardview.widget.CardView
             android:id="@+id/poster"
             android:layout_width="0dp"
@@ -59,7 +59,7 @@
             <ImageView
                 android:id="@+id/iv_product_detail_image"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="210dp"
                 android:padding="10dp"
                 android:backgroundTint="@color/no_color"
                 android:src="@drawable/bananana" />
@@ -251,7 +251,7 @@
             android:fontFamily="@font/montserrat_medium"
             android:paddingTop="10dp"
             android:paddingBottom="10dp"
-            android:text="@string/sing_in"
+            android:text="@string/edit_product"
             android:textAllCaps="false"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/view2"
@@ -261,4 +261,4 @@
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-</ScrollView>out.widget.ConstraintLayout>
+</ScrollView>

@@ -8,10 +8,7 @@ import android.util.Log
 import androidx.fragment.app.Fragment
 import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.models.User
-import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
-import com.canytech.adminapp.ui.activities.LoginActivity
-import com.canytech.adminapp.ui.activities.RegisterActivity
-import com.canytech.adminapp.ui.activities.SettingsActivity
+import com.canytech.adminapp.ui.activities.*
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
 import com.canytech.supermercado.models.ProductFeature
@@ -188,6 +185,41 @@ class FireStoreClass {
                     productsList.add(product)
                 }
 
+            }
+    }
+
+    fun getProductsDetails(activity: ProductDetailActivity, productId: String) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.toString())
+                val product = document.toObject(ProductTrending::class.java)
+                if (product != null) {
+                    activity.productDetailsSuccess(product)
+                }
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error while getting the product details,", e)
+            }
+
+    }
+
+    fun getFeatureProductsDetails(activity: ProductDetailActivity, productId: String) {
+        mFireStore.collection(Constants.FEATURES)
+            .document(productId)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(activity.javaClass.simpleName, document.toString())
+                val product = document.toObject(ProductTrending::class.java)
+                if (product != null) {
+                    activity.productDetailsSuccess(product)
+                }
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(activity.javaClass.simpleName, "Error while getting the product details,", e)
             }
     }
 
