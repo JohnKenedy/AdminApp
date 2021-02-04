@@ -14,7 +14,7 @@
         android:title="@string/search" />
 
     <item
-        android:id="@+id/menu_add"
+        android:id="@+id/menu_categories"
         android:orderInCategory="3"
         android:icon="@drawable/ic_baseline_add_photo_alternate_24"
         android:title="@string/add" />

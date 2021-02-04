@@ -89,7 +89,7 @@ class AddFeatureProductActivity : BaseActivity(), View.OnClickListener {
         hideProgressDialog()
         Toast.makeText(
             this@AddFeatureProductActivity,
-            resources.getString(R.string.product_uploaded_success_mesage),
+            resources.getString(R.string.product_uploaded_success_message),
             Toast.LENGTH_SHORT
         ).show()
         finish()

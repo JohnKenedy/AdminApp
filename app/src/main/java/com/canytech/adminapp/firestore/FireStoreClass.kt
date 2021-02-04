@@ -6,9 +6,11 @@ import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
 import androidx.fragment.app.Fragment
+import com.canytech.adminapp.models.ProductCategories
 import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.models.User
 import com.canytech.adminapp.ui.activities.*
+import com.canytech.adminapp.ui.fragments.CategoryFragment
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
 import com.canytech.supermercado.models.ProductFeature
@@ -127,6 +129,9 @@ class FireStoreClass {
                         is AddFeatureProductActivity -> {
                             activity.imageFeatureUploadSuccess(uri.toString())
                         }
+                        is AddCategoryActivity -> {
+                            activity.imageCategoryUploadSuccess(uri.toString())
+                        }
 
                     }
                 }
@@ -138,6 +143,9 @@ class FireStoreClass {
                         activity.hideProgressDialog()
                     }
                     is AddFeatureProductActivity -> {
+                        activity.hideProgressDialog()
+                    }
+                    is AddCategoryActivity -> {
                         activity.hideProgressDialog()
                     }
                 }
@@ -223,9 +231,25 @@ class FireStoreClass {
             }
     }
 
-    fun uploadFeatureProductDetails(
-        activity: AddFeatureProductActivity,
-        productFeatureInfo: ProductFeature
+    fun uploadCategoryDetails(activity: AddCategoryActivity, productCategoryInfo: ProductCategories
+    ) {
+        mFireStore.collection(Constants.CATEGORY)
+            .document()
+            .set(productCategoryInfo, SetOptions.merge())
+            .addOnSuccessListener {
+                activity.productCategoryUploadSuccess()
+            }
+            .addOnFailureListener { e ->
+                activity.hideProgressDialog()
+                Log.e(
+                    activity.javaClass.simpleName,
+                    "Error while uploading the category details.",
+                    e
+                )
+            }
+    }
+
+    fun uploadFeatureProductDetails(activity: AddFeatureProductActivity, productFeatureInfo: ProductFeature
     ) {
         mFireStore.collection(Constants.FEATURES)
             .document()
@@ -322,6 +346,30 @@ class FireStoreClass {
             .addOnFailureListener { e ->
                 fragment.hideProgressDialog()
                 Log.e(fragment.javaClass.simpleName, "Error while getting All products", e)
+            }
+    }
+
+    fun getAllCategoryProductsList(fragment: CategoryFragment) {
+        mFireStore.collection(Constants.CATEGORY)
+            .get()
+            .addOnSuccessListener { document ->
+                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+
+                val allCategoryProductsList: ArrayList<ProductCategories> = ArrayList()
+
+                for (i in document.documents) {
+
+                    val allCategoryProducts = i.toObject(ProductCategories::class.java)!!
+                    allCategoryProducts.category_id = i.id
+                    allCategoryProductsList.add(allCategoryProducts)
+                }
+
+                fragment.successAllCategoryProductList(allCategoryProductsList)
+
+            }
+            .addOnFailureListener { e ->
+                fragment.hideProgressDialog()
+                Log.e(fragment.javaClass.simpleName, "Error while getting All category", e)
             }
     }
 

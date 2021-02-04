@@ -12,6 +12,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AdminApp">
+        <activity android:name=".ui.activities.AddCategoryActivity"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity" />
         <activity android:name=".ui.activities.ProductDetailActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />

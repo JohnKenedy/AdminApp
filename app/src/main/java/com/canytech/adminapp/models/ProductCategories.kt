@@ -1,4 +1,4 @@
-package com.canytech.supermercado.models
+package com.canytech.adminapp.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
@@ -7,4 +7,8 @@ import kotlinx.android.parcel.Parcelize
 data class ProductCategories(
     val category_title: String = "",
     val img_category: String = "",
+    var category_id: String = ""
     ): Parcelable
+
+
+

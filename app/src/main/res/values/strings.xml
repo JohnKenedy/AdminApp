@@ -75,6 +75,7 @@
 
     <string name="error_msg_select_product_image">Please select product image.</string>
     <string name="error_msg_enter_product_title">Please enter product title.</string>
+    <string name="error_msg_enter_category_title">Please enter category title.</string>
     <string name="error_msg_enter_product_old_price">Please enter product old price.</string>
     <string name="error_msg_enter_product_price">Please enter product price.</string>
     <string name="error_msg_enter_product_description">Please enter product description.</string>
@@ -83,7 +84,8 @@
 
     <string name="old_price">2.99</string>
     <string name="et_hint_product_category">Product Category</string>
-    <string name="product_uploaded_success_mesage">Your product was uploaded successfully.</string>
+    <string name="product_uploaded_success_message">Your product was uploaded successfully.</string>
+    <string name="category_uploaded_success_message">Your category was uploaded successfully.</string>
     <string name="categories_id"><![CDATA[1 - Personal Care, 2 - Chocolate, biscuits & snacks, 3 - Fruits & Vegetables, 4 - Breakfast, dairy & cereals, 5 - Baby care, 6 - Grains, wheat & rice, 7 - Beverages]]></string>
     <string name="sign_price">$</string>
     <string name="unit_ex">1 kg, 200 g, 1 Unit., Box</string>
@@ -116,6 +118,7 @@
     <string name="out_of_stock">Out of stock:</string>
     <string name="number_ex">10</string>
     <string name="add_to_cart">Add to cart</string>
+    <string name="error_msg_select_category_image">Please select a category image.</string>
 
 
 </resources>

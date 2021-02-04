@@ -11,6 +11,7 @@ object Constants {
     const val USERS: String = "users"
     const val PRODUCTS: String = "products"
     const val FEATURES: String = "features"
+    const val CATEGORY: String = "category"
 
     const val MYGROCERYSTORE_PREFERENCES: String = "MyGroceryStorePrefs"
     const val LOGGED_IN_USERNAME: String = "logged_in_username"
@@ -31,6 +32,7 @@ object Constants {
 
     const val USER_PROFILE_IMAGE: String = "User_Profile_Image"
     const val PRODUCT_IMAGE: String = "Product_Image"
+    const val CATEGORY_IMAGE: String = "Category_Image"
 
     const val EXTRA_PRODUCT_ID: String = "extra_product_id"
 
