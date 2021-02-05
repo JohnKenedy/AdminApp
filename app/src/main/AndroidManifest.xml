@@ -19,7 +19,7 @@
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity
-            android:name="com.canytech.supermercado.ui.activities.AddTrendingProductActivity"
+            android:name=".ui.activities.AddTrendingProductActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
         <activity

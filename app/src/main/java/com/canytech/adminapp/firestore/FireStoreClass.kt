@@ -14,7 +14,7 @@ import com.canytech.adminapp.ui.fragments.CategoryFragment
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
 import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.ui.activities.AddTrendingProductActivity
+import com.canytech.adminapp.ui.activities.AddTrendingProductActivity
 import com.canytech.supermercado.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore

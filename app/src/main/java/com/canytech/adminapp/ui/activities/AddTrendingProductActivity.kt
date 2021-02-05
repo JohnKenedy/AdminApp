@@ -1,4 +1,4 @@
-package com.canytech.supermercado.ui.activities
+package com.canytech.adminapp.ui.activities
 
 import android.Manifest
 import android.app.Activity
@@ -10,15 +10,16 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.ProductTrending
-import com.canytech.adminapp.ui.activities.BaseActivity
 import com.canytech.supermercado.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
+import kotlinx.android.synthetic.main.activity_add_feature_product.*
 import kotlinx.android.synthetic.main.activity_add_product.*
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException
@@ -35,6 +36,21 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
 
         imageView_add_update_product.setOnClickListener(this)
         btn_add_product_submit.setOnClickListener(this)
+        val spinnerCategory = listOf(
+            "Personal care",
+            "Chocolate, biscuits & Snacks",
+            "Fruits &amp; vegetables",
+            "Breakfast, dairy &amp; cereals",
+            "Baby care",
+            "Grains, wheat & rice",
+            "Beverages"
+        )
+        val arraySpinnerAdapter = ArrayAdapter(
+            this,
+            R.layout.support_simple_spinner_dropdown_item,
+            spinnerCategory
+        )
+        spinner_trending_category.adapter = arraySpinnerAdapter
     }
 
     private fun setupActionBar() {
@@ -119,7 +135,7 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
             edit_text_product_old_price.text.toString().trim { it <= ' ' },
             edit_text_product_description.text.toString().trim { it <= ' ' },
             edit_text_product_quantity.text.toString().trim { it <= ' ' },
-            edit_text_product_category.text.toString().trim { it <= ' ' },
+//            edit_text_product_category.text.toString().trim { it <= ' ' },
             edit_text_product_unit.text.toString().trim { it <= ' ' },
 
             mProductImageURL
@@ -221,15 +237,15 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
                 )
                 false
             }
-            TextUtils.isEmpty(
-                edit_text_product_category.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    resources.getString(R.string.error_msg_enter_product_category),
-                    true
-                )
-                false
-
-            }
+//            TextUtils.isEmpty(
+//                edit_text_product_category.text.toString().trim { it <= ' ' }) -> {
+//                showErrorSnackBar(
+//                    resources.getString(R.string.error_msg_enter_product_category),
+//                    true
+//                )
+//                false
+//
+//            }
             else -> {
                 true
             }

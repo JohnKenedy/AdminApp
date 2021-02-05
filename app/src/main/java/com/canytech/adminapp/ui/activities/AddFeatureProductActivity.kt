@@ -10,6 +10,7 @@ import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -35,6 +36,21 @@ class AddFeatureProductActivity : BaseActivity(), View.OnClickListener {
 
         imageView_add_update_feature_product.setOnClickListener(this)
         btn_add_product_feature_submit.setOnClickListener(this)
+        val spinnerCategory = listOf(
+            "Personal care",
+            "Chocolate, biscuits & Snacks",
+            "Fruits &amp; vegetables",
+            "Breakfast, dairy &amp; cereals",
+            "Baby care",
+            "Grains, wheat & rice",
+            "Beverages"
+        )
+        val arraySpinnerAdapter = ArrayAdapter(
+            this,
+            R.layout.support_simple_spinner_dropdown_item,
+            spinnerCategory
+        )
+        spinner_feature_category.adapter = arraySpinnerAdapter
     }
 
     private fun setupActionBar() {
@@ -119,7 +135,7 @@ class AddFeatureProductActivity : BaseActivity(), View.OnClickListener {
             edit_text_product_feature_old_price.text.toString().trim { it <= ' ' },
             edit_text_product_feature_description.text.toString().trim { it <= ' ' },
             edit_text_product_feature_quantity.text.toString().trim { it <= ' ' },
-            edit_text_product_feature_category.text.toString().trim { it <= ' ' },
+//            edit_text_product_feature_category.text.toString().trim { it <= ' ' },
             edit_text_product_feature_unit.text.toString().trim { it <= ' ' },
 
             mFeatureProductImageURL
@@ -221,15 +237,14 @@ class AddFeatureProductActivity : BaseActivity(), View.OnClickListener {
                 )
                 false
             }
-            TextUtils.isEmpty(
-                edit_text_product_feature_category.text.toString().trim { it <= ' ' }) -> {
-                showErrorSnackBar(
-                    resources.getString(R.string.error_msg_enter_product_category),
-                    true
-                )
-                false
-
-            }
+//            TextUtils.isEmpty(
+//                edit_text_product_feature_category.text.toString().trim { it <= ' ' }) -> {
+//                showErrorSnackBar(
+//                    resources.getString(R.string.error_msg_enter_product_category),
+//                    true
+//                )
+//                false
+//            }
             else -> {
                 true
             }

@@ -7,7 +7,7 @@ import androidx.fragment.app.Fragment
 import com.canytech.adminapp.R
 import com.canytech.adminapp.ui.activities.AddCategoryActivity
 import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
-import com.canytech.supermercado.ui.activities.AddTrendingProductActivity
+import com.canytech.adminapp.ui.activities.AddTrendingProductActivity
 
 class MainFragment : Fragment() {
 
