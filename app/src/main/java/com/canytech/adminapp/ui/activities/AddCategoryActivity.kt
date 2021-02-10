@@ -16,12 +16,10 @@ import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.ProductCategories
-import com.canytech.supermercado.models.ProductFeature
-import com.canytech.supermercado.utils.Constants
+import com.canytech.adminapp.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_category_product.*
 import kotlinx.android.synthetic.main.activity_add_feature_product.*
-import kotlinx.android.synthetic.main.activity_add_feature_product.imageView_product_feature_image
 import kotlinx.android.synthetic.main.activity_add_product.*
 import kotlinx.android.synthetic.main.activity_user_profile.*
 import java.io.IOException

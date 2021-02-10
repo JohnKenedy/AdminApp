@@ -1,16 +1,12 @@
 package com.canytech.adminapp.ui.fragments
 
-import android.app.AlertDialog
 import android.os.Bundle
 import android.view.*
-import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.ProductCategories
-import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.ui.adapters.CategoryItemsAdapter
-import com.canytech.adminapp.ui.adapters.ProductFeatureItemsAdapter
 import kotlinx.android.synthetic.main.fragment_edit_category_product.*
 import kotlinx.android.synthetic.main.fragment_edit_features_product.*
 

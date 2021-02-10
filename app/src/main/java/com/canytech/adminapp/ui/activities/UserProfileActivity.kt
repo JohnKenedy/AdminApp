@@ -1,6 +1,5 @@
 package com.canytech.supermercado.ui.activities
 
-import android.Manifest
 import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -10,15 +9,11 @@ import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.Toast
-import androidx.core.app.ActivityCompat
-import androidx.core.content.ContextCompat
-import androidx.core.content.ContextCompat.startActivity
 import com.canytech.adminapp.R
-import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
 import com.canytech.adminapp.ui.activities.BaseActivity
 import com.canytech.adminapp.ui.activities.DashboardActivity
-import com.canytech.supermercado.utils.Constants
+import com.canytech.adminapp.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_register.*
 import kotlinx.android.synthetic.main.activity_settings.*

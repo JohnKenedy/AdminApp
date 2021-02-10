@@ -1,4 +1,4 @@
-package com.canytech.supermercado.utils
+package com.canytech.adminapp.utils
 
 import android.app.Activity
 import android.content.Intent
@@ -9,6 +9,7 @@ import android.webkit.MimeTypeMap
 object Constants {
 
     const val USERS: String = "users"
+    const val ORDERS: String = "orders"
     const val PRODUCTS: String = "products"
     const val FEATURES: String = "features"
     const val CATEGORY: String = "category"
@@ -35,6 +36,8 @@ object Constants {
     const val CATEGORY_IMAGE: String = "Category_Image"
 
     const val EXTRA_PRODUCT_ID: String = "extra_product_id"
+    const val TRENDING_LIST: String = "Trending List"
+
 
     fun showImageChooser(activity: Activity) {
 

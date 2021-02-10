@@ -5,17 +5,16 @@ import android.content.Context
 import android.content.SharedPreferences
 import android.net.Uri
 import android.util.Log
-import androidx.fragment.app.Fragment
+import com.canytech.adminapp.models.Order
+import com.canytech.adminapp.models.Product
 import com.canytech.adminapp.models.ProductCategories
-import com.canytech.adminapp.models.ProductTrending
 import com.canytech.adminapp.models.User
 import com.canytech.adminapp.ui.activities.*
 import com.canytech.adminapp.ui.fragments.CategoryFragment
+import com.canytech.adminapp.ui.fragments.OrdersFragment
 import com.canytech.adminapp.ui.fragments.ProductsFeatureFragment
 import com.canytech.adminapp.ui.fragments.ProductsTrendingFragment
-import com.canytech.supermercado.models.ProductFeature
-import com.canytech.adminapp.ui.activities.AddTrendingProductActivity
-import com.canytech.supermercado.utils.Constants
+import com.canytech.adminapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.SetOptions
@@ -126,9 +125,6 @@ class FireStoreClass {
                         is AddTrendingProductActivity -> {
                             activity.imageUploadSuccess(uri.toString())
                         }
-                        is AddFeatureProductActivity -> {
-                            activity.imageFeatureUploadSuccess(uri.toString())
-                        }
                         is AddCategoryActivity -> {
                             activity.imageCategoryUploadSuccess(uri.toString())
                         }
@@ -140,9 +136,6 @@ class FireStoreClass {
             .addOnFailureListener { exception ->
                 when (activity) {
                     is AddTrendingProductActivity -> {
-                        activity.hideProgressDialog()
-                    }
-                    is AddFeatureProductActivity -> {
                         activity.hideProgressDialog()
                     }
                     is AddCategoryActivity -> {
@@ -160,11 +153,11 @@ class FireStoreClass {
 
     fun uploadTrendingProductDetails(
         activity: AddTrendingProductActivity,
-        productTrendingInfo: ProductTrending
+        productInfo: Product
     ) {
         mFireStore.collection(Constants.PRODUCTS)
             .document()
-            .set(productTrendingInfo, SetOptions.merge())
+            .set(productInfo, SetOptions.merge())
             .addOnSuccessListener {
                 activity.productUploadSuccess()
             }
@@ -178,60 +171,9 @@ class FireStoreClass {
             }
     }
 
-    fun getTrendingProductsList(fragment: Fragment) {
-        mFireStore.collection(Constants.PRODUCTS)
-            .whereEqualTo(Constants.USER_ID, getCurrentUserID())
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e("Products List", document.documents.toString())
-                val productsList: ArrayList<ProductTrending> = ArrayList()
-                for (i in document.documents) {
 
-                    val product = i.toObject(ProductTrending::class.java)
-                    product!!.product_id = i.id
-
-                    productsList.add(product)
-                }
-
-            }
-    }
-
-    fun getProductsDetails(activity: ProductDetailActivity, productId: String) {
-        mFireStore.collection(Constants.PRODUCTS)
-            .document(productId)
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e(activity.javaClass.simpleName, document.toString())
-                val product = document.toObject(ProductTrending::class.java)
-                if (product != null) {
-                    activity.productDetailsSuccess(product)
-                }
-            }
-            .addOnFailureListener { e ->
-                activity.hideProgressDialog()
-                Log.e(activity.javaClass.simpleName, "Error while getting the product details,", e)
-            }
-
-    }
-
-    fun getFeatureProductsDetails(activity: ProductDetailActivity, productId: String) {
-        mFireStore.collection(Constants.FEATURES)
-            .document(productId)
-            .get()
-            .addOnSuccessListener { document ->
-                Log.e(activity.javaClass.simpleName, document.toString())
-                val product = document.toObject(ProductTrending::class.java)
-                if (product != null) {
-                    activity.productDetailsSuccess(product)
-                }
-            }
-            .addOnFailureListener { e ->
-                activity.hideProgressDialog()
-                Log.e(activity.javaClass.simpleName, "Error while getting the product details,", e)
-            }
-    }
-
-    fun uploadCategoryDetails(activity: AddCategoryActivity, productCategoryInfo: ProductCategories
+    fun uploadCategoryDetails(
+        activity: AddCategoryActivity, productCategoryInfo: ProductCategories
     ) {
         mFireStore.collection(Constants.CATEGORY)
             .document()
@@ -244,24 +186,6 @@ class FireStoreClass {
                 Log.e(
                     activity.javaClass.simpleName,
                     "Error while uploading the category details.",
-                    e
-                )
-            }
-    }
-
-    fun uploadFeatureProductDetails(activity: AddFeatureProductActivity, productFeatureInfo: ProductFeature
-    ) {
-        mFireStore.collection(Constants.FEATURES)
-            .document()
-            .set(productFeatureInfo, SetOptions.merge())
-            .addOnSuccessListener {
-                activity.productFeatureUploadSuccess()
-            }
-            .addOnFailureListener { e ->
-                activity.hideProgressDialog()
-                Log.e(
-                    activity.javaClass.simpleName,
-                    "Error while uploading the product details.",
                     e
                 )
             }
@@ -284,34 +208,17 @@ class FireStoreClass {
             }
     }
 
-    fun deleteFeatureProduct(fragment: ProductsFeatureFragment, productId: String) {
-        mFireStore.collection(Constants.FEATURES)
-            .document(productId)
-            .delete()
-            .addOnSuccessListener {
-                fragment.productFeatureDeleteSuccess()
-
-            }.addOnFailureListener { e ->
-                fragment.hideProgressDialog()
-
-                Log.e(
-                    fragment.requireActivity().javaClass.simpleName,
-                    "Error while deleting the product", e
-                )
-            }
-    }
-
     fun getAllProductsList(fragment: ProductsTrendingFragment) {
         mFireStore.collection(Constants.PRODUCTS)
             .get()
             .addOnSuccessListener { document ->
                 Log.e(fragment.javaClass.simpleName, document.documents.toString())
 
-                val allProductsList: ArrayList<ProductTrending> = ArrayList()
+                val allProductsList: ArrayList<Product> = ArrayList()
 
                 for (i in document.documents) {
 
-                    val allProducts = i.toObject(ProductTrending::class.java)!!
+                    val allProducts = i.toObject(Product::class.java)!!
                     allProducts.product_id = i.id
                     allProductsList.add(allProducts)
                 }
@@ -325,27 +232,37 @@ class FireStoreClass {
             }
     }
 
-    fun getAllFeaturesProductsList(fragment: ProductsFeatureFragment) {
-        mFireStore.collection(Constants.FEATURES)
+    fun getProductsDetails(activity: ProductDetailActivity, productId: String) {
+        mFireStore.collection(Constants.PRODUCTS)
+            .document(productId)
             .get()
             .addOnSuccessListener { document ->
-                Log.e(fragment.javaClass.simpleName, document.documents.toString())
+                Log.e(activity.javaClass.simpleName, document.toString())
+                val product = document.toObject(Product::class.java)
+                if (product != null) {
+                    activity.productDetailsSuccess(product)
+                }
+            }
+    }
 
-                val allFeaturesProductsList: ArrayList<ProductTrending> = ArrayList()
+
+    fun getMyOrdersList(fragment: OrdersFragment) {
+        mFireStore.collection(Constants.ORDERS)
+            .get()
+            .addOnSuccessListener { document ->
+                val list: ArrayList<Order> = ArrayList()
 
                 for (i in document.documents) {
+                    val orderItem = i.toObject(Order::class.java)!!
+                    orderItem.id = i.id
 
-                    val allFeaturesProducts = i.toObject(ProductTrending::class.java)!!
-                    allFeaturesProducts.product_id = i.id
-                    allFeaturesProductsList.add(allFeaturesProducts)
+                    list.add(orderItem)
                 }
+                fragment.populateOrdersListInUI(list)
 
-                fragment.successAllFeaturesProductList(allFeaturesProductsList)
-
-            }
-            .addOnFailureListener { e ->
+            }.addOnFailureListener { e ->
                 fragment.hideProgressDialog()
-                Log.e(fragment.javaClass.simpleName, "Error while getting All products", e)
+                Log.e(fragment.javaClass.simpleName, "Error while getting the orders list.", e)
             }
     }
 

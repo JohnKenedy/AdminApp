@@ -32,7 +32,7 @@
         </androidx.cardview.widget.CardView>
 
         <TextView
-            android:id="@+id/item_title_product"
+            android:id="@+id/item_list_title_product"
             android:layout_width="123dp"
             android:layout_height="19dp"
             android:layout_margin="8dp"
@@ -62,7 +62,7 @@
             android:text="@string/sign_price"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="@id/item_old_price_product"
-            app:layout_constraintStart_toEndOf="@id/item_price_product"
+            app:layout_constraintStart_toEndOf="@id/item_list_price_product"
             app:layout_constraintTop_toTopOf="@id/item_old_price_product" />
 
         <TextView
@@ -76,7 +76,7 @@
             android:text="@string/old_price"
             android:textSize="12sp"
             app:layout_constraintStart_toEndOf="@id/old_price_coin"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_unit" />
+            app:layout_constraintTop_toBottomOf="@id/textView_item_list_unit" />
 
         <View
             android:id="@+id/view"
@@ -96,12 +96,12 @@
             android:text="@string/sign_price"
             android:textSize="14sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/item_price_product"
-            app:layout_constraintStart_toStartOf="@+id/item_title_product"
+            app:layout_constraintBottom_toBottomOf="@id/item_list_price_product"
+            app:layout_constraintStart_toStartOf="@+id/item_list_title_product"
             app:layout_constraintTop_toTopOf="@+id/item_old_price_product" />
 
         <TextView
-            android:id="@+id/item_price_product"
+            android:id="@+id/item_list_price_product"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="1dp"
@@ -113,7 +113,7 @@
             app:layout_constraintTop_toTopOf="@+id/item_old_price_product" />
 
         <TextView
-            android:id="@+id/textView_item_unit"
+            android:id="@+id/textView_item_list_unit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -122,11 +122,11 @@
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/item_title_product"
-            app:layout_constraintTop_toBottomOf="@id/item_title_product" />
+            app:layout_constraintStart_toStartOf="@id/item_list_title_product"
+            app:layout_constraintTop_toBottomOf="@id/item_list_title_product" />
 
         <TextView
-            android:id="@+id/textView_item_title_category"
+            android:id="@+id/textView_item_list_title_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -135,11 +135,11 @@
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/item_title_product"
+            app:layout_constraintStart_toStartOf="@id/item_list_title_product"
             app:layout_constraintTop_toBottomOf="@id/price_coin" />
 
         <TextView
-            android:id="@+id/textView_item_category"
+            android:id="@+id/textView_item_list_category"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"
@@ -147,9 +147,9 @@
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="@id/textView_item_title_category"
-            app:layout_constraintStart_toEndOf="@id/textView_item_title_category"
-            app:layout_constraintTop_toTopOf="@id/textView_item_title_category" />
+            app:layout_constraintBottom_toBottomOf="@id/textView_item_list_title_category"
+            app:layout_constraintStart_toEndOf="@id/textView_item_list_title_category"
+            app:layout_constraintTop_toTopOf="@id/textView_item_list_title_category" />
 
         <TextView
             android:id="@+id/textView_item_title_quantity"
@@ -161,11 +161,11 @@
             android:textAllCaps="false"
             android:textSize="13sp"
             android:textStyle="bold"
-            app:layout_constraintStart_toStartOf="@id/textView_item_title_category"
-            app:layout_constraintTop_toBottomOf="@id/textView_item_category" />
+            app:layout_constraintStart_toStartOf="@id/textView_item_list_title_category"
+            app:layout_constraintTop_toBottomOf="@id/textView_item_list_category" />
 
         <TextView
-            android:id="@+id/textView_item_quantity"
+            android:id="@+id/textView_item_list_quantity"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/montserrat_medium"

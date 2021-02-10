@@ -9,7 +9,7 @@ import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
 import com.canytech.adminapp.models.User
 import com.canytech.supermercado.ui.activities.UserProfileActivity
-import com.canytech.supermercado.utils.Constants
+import com.canytech.adminapp.utils.Constants
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.android.synthetic.main.activity_login.*
 

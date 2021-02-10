@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_products" />
 
     <fragment
-        android:id="@+id/navigation_search"
+        android:id="@+id/navigation_add_product"
         android:name="com.canytech.adminapp.ui.fragments.SearchFragment"
         android:label="@string/title_search"
         tools:layout="@layout/fragment_search" />
@@ -24,8 +24,8 @@
         tools:layout="@layout/fragment_edit_trending_product" />
 
     <fragment
-        android:id="@+id/navigation_profile"
-        android:name="com.canytech.adminapp.ui.fragments.ProductsFeatureFragment"
+        android:id="@+id/navigation_orders"
+        android:name="com.canytech.adminapp.ui.fragments.OrdersFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_edit_features_product" />
+        tools:layout="@layout/fragment_orders" />
 </navigation>

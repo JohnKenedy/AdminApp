@@ -6,7 +6,6 @@ import android.view.*
 import androidx.fragment.app.Fragment
 import com.canytech.adminapp.R
 import com.canytech.adminapp.ui.activities.AddCategoryActivity
-import com.canytech.adminapp.ui.activities.AddFeatureProductActivity
 import com.canytech.adminapp.ui.activities.AddTrendingProductActivity
 
 class MainFragment : Fragment() {
@@ -40,10 +39,6 @@ class MainFragment : Fragment() {
         when (id) {
             R.id.action_add_trending_product -> {
                 startActivity(Intent(activity, AddTrendingProductActivity::class.java))
-                return true
-            }
-            R.id.action_add_feature_product -> {
-                startActivity(Intent(activity, AddFeatureProductActivity::class.java))
                 return true
             }
             R.id.action_add_category -> {

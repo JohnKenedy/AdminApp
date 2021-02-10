@@ -9,7 +9,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
-import com.canytech.adminapp.models.ProductTrending
+import com.canytech.adminapp.models.Product
 import com.canytech.adminapp.ui.adapters.ProductTrendingItemsAdapter
 import kotlinx.android.synthetic.main.fragment_edit_trending_product.*
 
@@ -75,7 +75,7 @@ class ProductsTrendingFragment : BaseFragment() {
         getAllProductsList()
     }
 
-    fun successAllProductList(productItemsList: ArrayList<ProductTrending>) {
+    fun successAllProductList(productItemsList: ArrayList<Product>) {
         hideProgressDialog()
 
         rv_edit_products_all_products.layoutManager =

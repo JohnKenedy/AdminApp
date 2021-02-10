@@ -8,7 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.canytech.adminapp.R
 import com.canytech.supermercado.models.ProductFeature
 import com.canytech.supermercado.utils.GlideLoader
+import kotlinx.android.synthetic.main.activity_product_detail.view.*
 import kotlinx.android.synthetic.main.item_list_layout.view.*
+import kotlinx.android.synthetic.main.item_list_layout.view.item_old_price_product
 
 open class MyFeatureListAdapter(
     private val context: Context,
@@ -25,7 +27,7 @@ open class MyFeatureListAdapter(
 
         if (holder is MyViewHolder){
             GlideLoader(context).loadProductPicture(model.image, holder.itemView.item_img_product)
-            holder.itemView.item_title_product.text = model.title
+            holder.itemView.item_list_title_product.text = model.title
             holder.itemView.item_old_price_product.text = model.old_price
             holder.itemView.item_price_product.text = model.price
             holder.itemView.textView_item_unit.text = model.unit

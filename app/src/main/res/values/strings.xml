@@ -119,6 +119,8 @@
     <string name="number_ex">10</string>
     <string name="add_to_cart">Add to cart</string>
     <string name="error_msg_select_category_image">Please select a category image.</string>
+    <string name="orders">Orders</string>
 
+    <string name="no_orders_placed_yet">No orders placed yet!</string>
 
 </resources>

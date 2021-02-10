@@ -16,8 +16,8 @@ import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import com.canytech.adminapp.R
 import com.canytech.adminapp.firestore.FireStoreClass
-import com.canytech.adminapp.models.ProductTrending
-import com.canytech.supermercado.utils.Constants
+import com.canytech.adminapp.models.Product
+import com.canytech.adminapp.utils.Constants
 import com.canytech.supermercado.utils.GlideLoader
 import kotlinx.android.synthetic.main.activity_add_feature_product.*
 import kotlinx.android.synthetic.main.activity_add_product.*
@@ -36,6 +36,7 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
 
         imageView_add_update_product.setOnClickListener(this)
         btn_add_product_submit.setOnClickListener(this)
+
         val spinnerCategory = listOf(
             "Personal care",
             "Chocolate, biscuits & Snacks",
@@ -50,7 +51,18 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
             R.layout.support_simple_spinner_dropdown_item,
             spinnerCategory
         )
-        spinner_trending_category.adapter = arraySpinnerAdapter
+        spinner_select_category.adapter = arraySpinnerAdapter
+
+        val spinnerSelectRecyclerView = listOf(
+            "Trending List",
+            "Feature List"
+        )
+        val arraySpinnerRecyclerAdapter = ArrayAdapter(
+            this,
+            R.layout.support_simple_spinner_dropdown_item,
+            spinnerSelectRecyclerView
+        )
+        spinner_select_recycler_view.adapter = arraySpinnerRecyclerAdapter
     }
 
     private fun setupActionBar() {
@@ -127,7 +139,7 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
             Constants.MYGROCERYSTORE_PREFERENCES, Context.MODE_PRIVATE)
             .getString(Constants.LOGGED_IN_USERNAME, "")!!
 
-        val product = ProductTrending(
+        val product = Product(
             FireStoreClass().getCurrentUserID(),
             username,
             edit_text_product_title.text.toString().trim { it <= ' ' },
@@ -135,7 +147,8 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
             edit_text_product_old_price.text.toString().trim { it <= ' ' },
             edit_text_product_description.text.toString().trim { it <= ' ' },
             edit_text_product_quantity.text.toString().trim { it <= ' ' },
-//            edit_text_product_category.text.toString().trim { it <= ' ' },
+            spinner_select_category.selectedItem.toString(),
+            spinner_select_recycler_view.selectedItem.toString(),
             edit_text_product_unit.text.toString().trim { it <= ' ' },
 
             mProductImageURL

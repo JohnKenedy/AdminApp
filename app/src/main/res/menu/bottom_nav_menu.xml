@@ -8,27 +8,27 @@
         android:title="@string/home" />
 
     <item
-        android:id="@+id/navigation_search"
-        android:icon="@drawable/ic_baseline_search_24"
+        android:id="@+id/navigation_add_product"
+        android:icon="@drawable/ic_baseline_add_photo_alternate_24"
         android:orderInCategory="2"
-        android:title="@string/search" />
+        android:title="@string/add" />
 
     <item
-        android:id="@+id/menu_categories"
+        android:id="@+id/navigation_edit_trending"
         android:orderInCategory="3"
-        android:icon="@drawable/ic_baseline_add_photo_alternate_24"
-        android:title="@string/add" />
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="@string/trending" />
 
     <item
         android:id="@+id/navigation_edit_products"
         android:icon="@drawable/ic_baseline_edit_24"
         android:orderInCategory="4"
-        android:title="@string/trending" />
+        android:title="@string/feature" />
 
     <item
-        android:id="@+id/navigation_profile"
-        android:icon="@drawable/ic_baseline_person_24"
+        android:id="@+id/navigation_orders"
+        android:icon="@drawable/ic_baseline_attach_money_24"
         android:orderInCategory="5"
-        android:title="@string/feature" />
+        android:title="@string/orders" />
 
 </menu>

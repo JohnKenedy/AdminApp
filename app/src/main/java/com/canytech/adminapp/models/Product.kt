@@ -4,7 +4,7 @@ import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize
 
 @Parcelize
-data class ProductTrending(
+data class Product(
     val user_id: String = "",
     val user_name: String = "",
     val title: String = "",
@@ -13,6 +13,7 @@ data class ProductTrending(
     val description: String = "",
     val stock_quantity: String = "",
     val category: String = "",
+    val recycler: String = "",
     val unit: String = "",
     val image: String = "",
     var product_id: String = ""
