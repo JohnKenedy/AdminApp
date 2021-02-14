@@ -117,7 +117,7 @@ class AddCategoryActivity : BaseActivity(), View.OnClickListener {
             mCategoryProductImageURL
         )
 
-        FireStoreClass().uploadCategoryDetails(this, CategoryProduct)
+
     }
 
     override fun onRequestPermissionsResult(

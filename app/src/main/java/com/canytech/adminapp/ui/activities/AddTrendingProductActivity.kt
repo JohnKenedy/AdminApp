@@ -40,8 +40,8 @@ class AddTrendingProductActivity : BaseActivity(), View.OnClickListener {
         val spinnerCategory = listOf(
             "Personal care",
             "Chocolate, biscuits & Snacks",
-            "Fruits &amp; vegetables",
-            "Breakfast, dairy &amp; cereals",
+            "Fruits & vegetables",
+            "Breakfast, dairy & cereals",
             "Baby care",
             "Grains, wheat & rice",
             "Beverages"

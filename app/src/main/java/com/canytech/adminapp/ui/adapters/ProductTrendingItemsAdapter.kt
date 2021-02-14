@@ -37,8 +37,6 @@ open class ProductTrendingItemsAdapter (
 
                 model.image, holder.itemView.item_img_product)
             holder.itemView.item_list_title_product.text = model.title
-            holder.itemView.textView_item_unit.text = model.unit
-            holder.itemView.item_price_product.text = model.price
             holder.itemView.item_old_price_product.text = model.old_price
             holder.itemView.textView_item_list_category.text = model.category
             holder.itemView.textView_item_list_quantity.text = model.stock_quantity

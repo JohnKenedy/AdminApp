@@ -52,6 +52,6 @@ class CategoryFragment : BaseFragment() {
 
     private fun getAllCategoryProductsList() {
         showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getAllCategoryProductsList(this@CategoryFragment)
+
     }
 }

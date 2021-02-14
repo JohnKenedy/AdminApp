@@ -31,7 +31,6 @@ class ProductsTrendingFragment : BaseFragment() {
 
     override fun onResume() {
         super.onResume()
-        getAllProductsList()
     }
 
     fun deleteProduct(productID: String) {
@@ -72,7 +71,6 @@ class ProductsTrendingFragment : BaseFragment() {
             Toast.LENGTH_SHORT
         ).show()
 
-        getAllProductsList()
     }
 
     fun successAllProductList(productItemsList: ArrayList<Product>) {
@@ -87,10 +85,5 @@ class ProductsTrendingFragment : BaseFragment() {
             this@ProductsTrendingFragment
         )
         rv_edit_products_all_products.adapter = adapterAllProducts
-    }
-
-    private fun getAllProductsList() {
-        showProgressDialog(resources.getString(R.string.please_wait))
-        FireStoreClass().getAllProductsList(this@ProductsTrendingFragment)
     }
 }

@@ -122,5 +122,32 @@
     <string name="orders">Orders</string>
 
     <string name="no_orders_placed_yet">No orders placed yet!</string>
+    
+    <string name="title_my_orders_details">My order details</string>
+    <string name="order_details_lbl">Order details</string>
+    <string name="order_details_lbl_order_id">Order ID</string>
+    <string name="order_details_lbl_order_date">Order Date</string>
+    <string name="order_details_lbl_order_status">Order status</string>
+    <string name="order_details_lbl_order_pending">Pending</string>
+    <string name="order_details_lbl_order_shipping_address">Shipping Address</string>
+    <string name="checkout_lbl_product_items">Product Items</string>
+    <string name="checkout_lbl_items_receipt">Items Receipt</string>
+    <string name="subtotal">Subtotal</string>
+    <string name="shipping_charge">Shipping charge</string>
+    <string name="lbl_total_amount">Total amount</string>
+    <string name="lbl_payment_mode">Payment mode</string>
+    <string name="lbl_cash_on_delivery">Cash on delivery</string>
+
+    <string name="order_status_in_process">In Process</string>
+    <string name="order_status_delivered">Delivered</string>
+    <string name="lbl_out_of_stock">Out of stock</string>
+    <string name="msg_for_available_stock">Available stock is %1$s!. You can not add more than stock quantity.</string>
+    <string name="stock">Stock:</string>
+    <string name="btn_add_to_cart">Add to cart</string>
+    <string name="btn_go_to_cart">Go to cart</string>
+    <string name="success_item_added_to_cart">Success adding item to cart</string>
+    <string name="quantity">Quantity:</string>
+    <string name="title_my_cart">My cart</string>
+    <string name="no_cart_item_found">no item found</string>
 
 </resources>
